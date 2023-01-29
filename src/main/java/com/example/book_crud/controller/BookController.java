@@ -3,13 +3,14 @@ package com.example.book_crud.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.book_crud.config.talent.TenantIdManager;
 import com.example.book_crud.controller.utils.Result;
-import com.example.book_crud.domain.Book;
+import com.example.book_crud.dao.BookDao;
+import com.example.book_crud.entity.domain.Book;
+import com.example.book_crud.entity.vo.BookVO;
 import com.example.book_crud.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @RestController
 @RequestMapping("/books")
@@ -18,6 +19,8 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private BookDao bookDao;
 
     @Autowired
     private TenantIdManager tenantIdManager;
@@ -29,20 +32,36 @@ public class BookController {
 //        return "/pages/books";
 //    }
 
+
+
     @GetMapping
     public Result queryAll(){
         tenantIdManager.setCurrentTenantId(233L);
-
-
         return new Result(true,bookService.list());
     }
 
-    @PostMapping
+
+    @GetMapping("/login/{id}")
+    public Result login(@PathVariable Long id){
+        //模拟用户登陆
+        //userAccount check
+        //set tenantId
+        tenantIdManager.setCurrentTenantId(id);
+        return new Result("您已经登陆,当前租户id:"+id);
+    }
+    @GetMapping("/findBookName")
+    public Result findByName(@RequestParam("name") String name){
+        List<BookVO> booksByName = bookDao.findBooksByName(name);
+
+        return new Result(true,booksByName);
+    }
+
+    @PostMapping("/save")
     public Result save(@RequestBody Book book){
         return new Result(bookService.save(book));
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public Result update(@RequestBody Book book){
         return new Result(bookService.modify(book));
     }

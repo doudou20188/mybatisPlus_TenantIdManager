@@ -16,4 +16,8 @@ public class Result {
         this.flag = flag;
         this.data = data;
     }
+
+    public Result(Object data){
+        this.data = data;
+    }
 }

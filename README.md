@@ -26,6 +26,11 @@
 - 2.3 com.example.book_crud.controller.BookController.queryAll  设置租户ID，查询验证
 ==>  Preparing: SELECT id, type, name, description FROM tbl_book WHERE tenant_id = 233
 是看到拼接了，实际CRUD都会拼接，特殊不拼接，需要额外设置拦截处理，XML应该是没有拦截的，这个待验证。
+- 2.4 com.example.book_crud.controller.BookController.findByName
+常规手动写XML查询也会进行拦截处理，已验证 
+==>  Preparing: SELECT id, type, name, description FROM tbl_book WHERE name = ? AND tenant_id = 233
+
+
 
 - 2.4 关于多租户不需要拦截表的配置待补充TODO
 可以选择配置或者注解模式

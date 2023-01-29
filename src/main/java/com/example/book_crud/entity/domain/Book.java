@@ -1,4 +1,4 @@
-package com.example.book_crud.domain;
+package com.example.book_crud.entity.domain;
 
 import lombok.Data;
 

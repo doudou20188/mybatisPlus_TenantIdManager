@@ -1,9 +1,8 @@
 package com.example.book_crud.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.book_crud.domain.Book;
+import com.example.book_crud.entity.domain.Book;
 
 
 public interface BookService extends IService<Book> {
