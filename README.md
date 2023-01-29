@@ -14,6 +14,8 @@
 
 [//]: # (![preview]&#40;https://raw.githubusercontent.com/SiQuan-Wen/SpringBoot-Demo-CRUD/master/images/preview.jpeg&#41;)
 
+这是一个小样例子，可以拉下来单独启动，需要执行DB的SQL配置
+
 ### 1.项目启动
 [启动1](http://localhost:8080)
 [启动2](http://localhost:8080/pages/books.html)
