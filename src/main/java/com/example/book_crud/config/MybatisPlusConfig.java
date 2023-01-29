@@ -2,6 +2,7 @@ package com.example.book_crud.config;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
+import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
 import com.example.book_crud.config.talent.TenantIdManager;
 import net.sf.jsqlparser.expression.Expression;
@@ -36,6 +37,9 @@ public class MybatisPlusConfig{
         //根据需求，添加需要的MP拦截器
         //1分页插件
 //        interceptor.addInnerInterceptor(new PaginationInnerInterceptor());
+        //乐观锁插件
+//        interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor()); // 乐观锁插件
+
         //2.多租户ID插件
         interceptor.addInnerInterceptor(tenantInterceptor);
         return interceptor;
