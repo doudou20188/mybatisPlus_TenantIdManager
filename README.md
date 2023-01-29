@@ -28,6 +28,7 @@
 是看到拼接了，实际CRUD都会拼接，特殊不拼接，需要额外设置拦截处理，XML应该是没有拦截的，这个待验证。
 
 - 2.4 关于多租户不需要拦截表的配置待补充TODO
+可以选择配置或者注解模式
 
 ### 3.实现参考
 https://www.hxstrive.com/subject/mybatis_plus.htm?id=311
