@@ -1,11 +1,15 @@
 package com.example.book_crud.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.example.book_crud.config.talent.TenantIdManager;
 import com.example.book_crud.controller.utils.Result;
 import com.example.book_crud.domain.Book;
 import com.example.book_crud.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/books")
@@ -14,8 +18,22 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+
+    @Autowired
+    private TenantIdManager tenantIdManager;
+
+
+//    @RequestMapping("/")
+//    public String index(Model model,HttpServletResponse response) {
+//        model.addAttribute("name", "simonsfan");
+//        return "/pages/books";
+//    }
+
     @GetMapping
     public Result queryAll(){
+        tenantIdManager.setCurrentTenantId(233L);
+
+
         return new Result(true,bookService.list());
     }
 

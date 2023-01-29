@@ -29,6 +29,10 @@ CREATE TABLE `tbl_book`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
+-- 这个是多租户的默认字段，根据需要添加。如果系统有多张表，需要区分MP是否进行多租户CRUD操作的拦截，默认拦截，都会拼接此字段，类似乐观锁的处理。
+alter table tbl_book add column tenant_id bigint not null default '0' comment '多租户Id';
+
+
 -- ----------------------------
 -- Records of tbl_book
 -- ----------------------------
